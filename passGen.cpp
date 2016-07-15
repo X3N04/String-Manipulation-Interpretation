@@ -1,3 +1,15 @@
+/*
+ * passGen.cpp
+ *
+ * Daniel Salazar
+ * 7/14/16
+ * Creates a password under a set of rules:
+ *  1) No repeated characters (Case Insensitive) : A and a
+ *  2) No consecutive Uppercase Letters : AA
+ *  3) No consecutive Lowercase Letters : bb
+ *  4) No sequential Letters : ABC
+ *  5) No sequential Numbers : 123
+ */
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -28,6 +40,8 @@ int main()
 	// Prompt user for length
 	cout << "Enter length of password." << endl;
 	cin >> len;
+	if(len < 8)
+	   len = 8;
 	int *array = new int[len];
 	while (!finished)
 	{
