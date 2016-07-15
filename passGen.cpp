@@ -17,17 +17,21 @@
 using namespace std;
 int main()
 {
+	// Designated type 0
 	std::string uppercaseLetters[26][2] = { {"A", "0"}, {"B", "0"}, {"C", "0"}, {"D", "0"}, {"E", "0"}, {"F", "0"}, {"G", "0"}, \
 		{"H", "0"}, {"I", "0"}, {"J", "0"}, {"K", "0"}, {"L", "0"}, {"M", "0"}, {"N", "0"}, {"O", "0"}, {"P", "0"}, {"Q", "0"}, \
 		{"R", "0"}, {"S", "0"}, {"T", "0"}, {"U", "0"}, {"V", "0"}, {"W", "0"}, {"X", "0"}, {"Y", "0"}, {"Z", "0"}
 	};
+	// Designated type 1
 	std::string lowercaseLetters[26][2] = { {"a", "0"}, {"b", "0"}, {"c", "0"}, {"d", "0"}, {"e", "0"}, {"f", "0"}, {"g", "0"}, \
 		{"h", "0"}, {"i", "0"}, {"j", "0"}, {"k", "0"}, {"l", "0"}, {"m", "0"}, {"n", "0"}, {"o", "0"}, {"p", "0"}, {"q", "0"},
 		{"r", "0"}, {"s", "0"}, {"t", "0"}, {"u", "0"}, {"v", "0"}, {"w", "0"}, {"x", "0"}, {"y", "0"}, {"z", "0"}
 	};
+	// Designated type 2
 	std::string numbers[10][2] = { {"0", "0"}, {"1", "0"}, {"2", "0"}, {"3", "0"}, {"4", "0"}, {"5", "0"}, {"6", "0"}, \
 		{"7", "0"}, {"8", "0"}, {"9", "0"}
 	};
+	// Designated type 3
 	std::string symbols[32][2] = { {"`", "0"}, {"~", "0"}, {"!", "0"}, {"@", "0"}, {"#", "0"}, {"$", "0"}, {"%", "0"}, {"^", "0"}, \
 		{"&", "0"}, {"*", "0"}, {"(", "0"}, {")", "0"}, {"_", "0"}, {"-", "0"}, {"+", "0"}, {"=", "0"}, {"{", "0"}, {"}", "0"}, \
 		{"[", "0"}, {"]", "0"}, {"\\", "0"}, {"|", "0"}, {":", "0"}, {";", "0"}, {"\"", "0"}, {"'", "0"}, {"<", "0"}, {">", "0"}, \
@@ -40,11 +44,23 @@ int main()
 	// Prompt user for length
 	cout << "Enter length of password." << endl;
 	cin >> len;
-	if(len < 8)
-	   len = 8;
+	// Minimum length is 8
+	if(len < 8) len = 8;
 	int *array = new int[len];
+	/*
+	 * The password is finished when:
+	 * there exists an element of [A-Z] && [a-z] && [0-9] && [symbol] in password string
+	 */
 	while (!finished)
 	{
+		/*
+		 * Assign a type for each character where:
+		 * 0 = A-Z
+		 * 1 = a-z
+		 * 2 = 0-9
+		 * 3 = symbols
+		 * Each element must be different than the previous
+		 */
 		for (int i = 0; i < len; ++i)
 		{
 			array[i] = rand() % 3;
@@ -52,6 +68,11 @@ int main()
 				while (array[i - 1] == array[i])
 					array[i] = rand() % 4;
 		}
+		/*
+		 * Get each type in array
+		 * Get a random character from the designated type
+		 * Appends character to password string
+		 */
 		for (int j = 0; j < len; ++j)
 		{
 			int type = array[j], character;
