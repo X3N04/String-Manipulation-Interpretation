@@ -18,10 +18,8 @@ bool isAnBn(std::string s)
 }
 int main()
 {
-   std::string s = "AAABBB";
-   std::cout << isAnBn(s) << std::endl;
-   s = "AABBB";
-   std::cout << isAnBn(s) << std::endl;
+   std::cout << isAnBn("AAABBB") << std::endl;
+   std::cout << isAnBn("AAh!RealMonsters,B") << std::endl;
    return 0;
 }
 
