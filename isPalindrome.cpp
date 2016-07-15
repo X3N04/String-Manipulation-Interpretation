@@ -18,7 +18,7 @@ bool isPalindrome(std::string s)
 }
 int main()
 {
-   std::string s = "tattattat";
+   std::string s = "tattarrattat";
    std::cout << isPalindrome(s) << std::endl;
    s = "erhmehgerd";
    std::cout << isPalindrome(s) << std::endl;
